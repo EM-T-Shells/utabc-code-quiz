@@ -7,7 +7,6 @@
   <link src="hof.html">
   <link src="index.html">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-
   <link rel="stylesheet" src="assets/style.css">
   <title>Code Quiz</title>
 </head>
@@ -31,61 +30,56 @@
         Restart Quiz
       </a>
     </nav>
-    <!--clock-->
-    <div class="box w-50 h-auto d-flex my-4 border border-danger align-self-center text-center">
-      <!-- countdown circle -->
-      <svg class="clock-container">
-        <circle class="clock-shape"></circle>
-        <circle class="clock-shape main-circle"></circle>
-      </svg>
-      <!-- digital clock -->
-      <div class="content d-flex display-2 align-self-center px-3 ">
-        <span class="time sec text-danger">
-          90
-        </span>
-        <b class="colon"><!----></b>
-        <p class="time-text text-muted">s</p>
-      </div>
+
+    <!--timer-->
+    <div id="timer">
+      <div id="counter"></div>
+      <div id="btimeGauge"></div>
+      <div id="timeGauge"></div>
     </div>
 
+    <!--score-->
+    <div id="scoreContainer" class="score text-white text-center m-auto"></div>
+
   <!--card for quiz question and choices-->
-    <div class="card col-10 h-auto mx-auto mb-4 border-info bg-dark bg-gradient">
+    <div class="card col-10 d-flex flex-column m-auto border-info bg-dark bg-gradient">
+
+      <!--progress-->
+      <div id="progress" class="progress bg-secondary"></div>
+
+      <!--question div-->
       <div class="card-header bg-black text-white text-center h-auto py-4">
-        <span class="lead question-text">Question 1</span>
+        <span id="question-text" class="lead question-text"></span>
       </div>
-      <div class="progress w-100 bg-primary border">
-        <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5">
+
+      <!--quiz-->
+      <div id="choices" class="card-body px-3 pb-0">
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="A" value=" " onsubmit="checkAnswer('A')">
+          <label class="choice-text" for="A"></label>
         </div>
-      </div>
-      <div class="card-body px-3 pb-0">
-        <div class="form-choices">
-          <input class="form-choices-input p-3 w-100 bg-info" type="submit" name="q1" id="q1_c1" value="c1">
-          <label class="form-choices-label" for="q1_c1"></label>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="B" value=" " onsubmit="checkAnswer('B')">
+          <label class="choice-text" for="B"></label>
         </div>
-        <div class="form-choices">
-          <input class="form-choices-input p-3 w-100 bg-info" type="submit" name="q1" id="q1_c2" value="c2">
-          <label class="form-choices-label" for="q1_c2"></label>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="C" value=" " onsubmit="checkAnswer('C')">
+          <label class="choice-text" for="C"></label>
         </div>
-        <div class="form-choices">
-          <input class="form-choices-input p-3 w-100 bg-info" type="submit" name="q1" id="q1_c3" value="c3">
-          <label class="form-choices-label" for="q1_c3"></label>
-        </div>
-        <div class="form-choices">
-          <input class="form-choices-input p-3 w-100 bg-info" type="submit" name="q1" id="q1_c4" value="c4">
-          <label class="form-choices-label" for="q1_c4"></label>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="D" value=" " onsubmit="checkAnswer('D')">
+          <label class="choice-text" for="D"></label>
         </div>
 
       <!--footer for restart and quit, quiz options-->
-        <div class=”card-footer”></div>
+      <div class=”card-footer”></div>
 
-
-  <!--end card-->
     </div>
-
-<!--end jumbotron-->
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
-  <script src="jquery.simple.timer.js"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>
