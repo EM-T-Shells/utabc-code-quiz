@@ -4,44 +4,136 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" src="assets/style.css">
   <link src="game.html">
-  <title>Code Quiz</title>
 </head>
 <body>
-
-    <div class="card bg-black justify-content-center text-center vh-10000">
-      <div class="card-body m-5 bg-gradient border border-rounded border-secondary">
-        <div class="card-body m-5 bg-gradient border border-rounded border-secondary">
-          <div class="card-body m-5 bg-gradient border border-rounded border-secondary">
-            <div class="card-body m-5 bg-gradient border border-rounded border-secondary">
-              <div class="card-body m-5 bg-gradient border border-rounded border-secondary">
-                <h1 class="text- bg-gradient border border-secondary">Code Quiz</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-        <blockquote class="blockquote">
-          <p class="blockquote mx-5 mb-4 text-muted"><em>"You take the blue pill—the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes."</em></p>
-          <footer class="blockquote-footer">Morpheus <cite title="Source Title">The Matrix</cite></footer>
-        </blockquote>
-      </div>
-      <div class="card-footer justify-content-between">
-        <a href="game.html">
-          <button onclick="return startQuiz()" type="submit" id="readyStartBtn" class="startPageButtons btn btn-danger p-4 mb-3 col-3">
-            Ready Player 1?
-          </button>
-        </a>
-        <a href="hof.html">
-          <button type="submit" id="hallOfFameBtn" class="startPageButtons btn btn-info text-white p-4 mb-3 col-3" onclick="return readyStartBtn()" type="button">
-            Hall of Fame
-          </button>
-        </a>
+  <div class="card bg-black text-center vh-100">
+    <div class="card-body d-flex flex-column col-10 align-items-center mx-auto my-5 bg-gradient border rounded border-secondary">
+      <h1 class="display-1 w-100 text-dark bg-secondary bg-gradient border rounded border-secondary py-4">Code Quiz</h1>
+      <blockquote class="blockquote col-9 mt-5">
+        <p class="quote mt-5 text-muted">
+          <em>"You take the blue pill—the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes."</em>
+        </p>
+        <footer class="blockquote-footer mt-1">
+          Morpheus
+          <cite title="Source Title" class="text-success">
+            The Matrix
+          </cite>
+        </footer>
+      </blockquote>
+      <div class="m-auto">
+        <button id="readyStartBtn" class="btn btn-danger border p-5" type="button">
+          Ready Player 1?
+        </button>
+        <div class="btn space "></div>
+        <button id="hallOfFameBtn" class="startPageButtons btn btn-info border p-5 text-white" type="button">
+          Hall of Fame
+        </button>
       </div>
     </div>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+  <!--quiz page-->
+  <div class="jumbotron d-flex flex-column bg-black vh-100">
+  <!--navbar for high-scores and timer-->
+    <nav class="navbar justify-content-evenly bg-dark  bg-gradient border-bottom border-success py-3">
+      <a class="nav-item-HOF text-decoration-none text-success" href="hof.html">
+        <div class="text-center">&#x1F3C6;</div>
+        Hall of Fame
+      </a>
+      <a class="nav-item-home text-decoration-none" href="index.html">
+        <div class="text-center">
+          &#127968;
+        </div>
+        Home Page
+      </a>
+      <a class="nav-item-restart text-decoration-none text-warning" href="game.html">
+        <div class="text-center">&#128466;</div>
+        Restart Quiz
+      </a>
+    </nav>
+
+    <!--timer-->
+    <div id="timer">
+      <div id="counter"></div>
+      <div id="btimeGauge"></div>
+      <div id="timeGauge"></div>
+    </div>
+
+    <!--score-->
+    <div id="scoreContainer" class="score text-white text-center m-auto"></div>
+
+    <!--card for quiz question and choices-->
+    <div class="card col-10 d-flex flex-column m-auto border-info bg-dark bg-gradient">
+
+      <!--progress-->
+      <div id="progress" class="progress bg-secondary"></div>
+
+      <!--question div-->
+      <div class="card-header bg-black text-white text-center h-auto py-4">
+        <span id="question-text" class="lead question-text"></span>
+      </div>
+
+      <!--quiz-->
+      <div id="choices" class="card-body px-3 pb-0">
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="A" value=" " onsubmit="checkAnswer('A')">
+          <label class="choice-text" for="A"></label>
+        </div>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="B" value=" " onsubmit="checkAnswer('B')">
+          <label class="choice-text" for="B"></label>
+        </div>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="C" value=" " onsubmit="checkAnswer('C')">
+          <label class="choice-text" for="C"></label>
+        </div>
+
+        <div class="choice">
+          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="D" value=" " onsubmit="checkAnswer('D')">
+          <label class="choice-text" for="D"></label>
+        </div>
+
+      <!--footer for restart and quit, quiz options-->
+      <div class=”card-footer”></div>
+    </div>
+  </div>
+
+
+  <!--HoF page-->
+  <div class="container-fluid d-flex flex-column bg-black bg-gradient vh-100">
+    <nav class="navbar justify-content-evenly bg-dark  bg-gradient border-bottom border-success py-3">
+      <a class="nav-item-HOF text-decoration-none text-success" href="hof.html">
+        <div class="text-center">&#x1F3C6;</div>
+        Hall of Fame
+      </a>
+      <a class="nav-item-home text-decoration-none" href="index.html">
+        <div class="text-center">
+          &#127968;
+        </div>
+        Home Page
+      </a>
+      <a class="nav-item-restart text-decoration-none text-warning" href="game.html">
+        <div class="text-center">&#128466;</div>
+        Restart Quiz
+      </a>
+    </nav>
+    <div class="card align-items-center col-6 m-auto bg-dark border border-success">
+      <div class="card-header border-success">
+        <h1 class="card-title display-1 text-center text-success">Hall of Fame</h1>
+      </div>
+      <div class="card-body display-6">
+        <ol class="list-group-item mt-3 text-light">
+        </ol>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/script.js"></script>
 </body>
