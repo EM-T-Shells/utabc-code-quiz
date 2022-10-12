@@ -1,7 +1,7 @@
 # utabc-code-quiz
 
 ## Description
-This is a quiz application with some added functionalities including a timer and score counter. The DOM is heavily used to grab elements and use their values for calculations. The questions and answer choices are utilized as arrays which makes it easy to render the question cycle as the user progresses. The timer is based on the setInterval method which is set to countdown from a starting point declared prior to the timer function. The webpage has multiple displays within it and since the application was solely styled with bootstrap, the DOM was again utilized to set displays to none or block, depending on the user action. The most difficult aspect in building this application was linking wrong or right answers with the score as well as the timer. WIth basic conditionals and for loops, it made the matter feasible. Though it's a small application, the concepts within apply to large applications as well and would suit one well who spends the time understanding them.
+This is a quiz application with some added functionalities including a timer and score counter. The DOM is heavily used to grab elements and use their values for calculations. Web APIs such as JSON (used in this app) are valuable in locally storing data on client-sided servers. This is how the user inputs and high scores are saved and updated. The questions and answer choices are utilized as arrays which makes it easy to render the question cycle as the user progresses. The timer is based on the setInterval method which is set to countdown from a starting point declared prior to the timer function. The webpage has multiple displays within it and since the application was solely styled with bootstrap, the DOM was again utilized to set displays to none or block, depending on the user action. The most difficult aspect in building this application was linking wrong or right answers with the score as well as the timer. WIth basic conditionals and for loops, it made the matter feasible. Though it's a small application, the concepts within apply to large applications as well and would suit one well who spends the time understanding them.
 
 
 ![]()
@@ -30,7 +30,7 @@ https://getbootstrap.com/docs/3.4/javascript/
 https://www.tutorialrepublic.com/codelab.php?topic=faq&file=javascript-stop-setinterval-call
 
 ![]()
-### [See the live Webpage]()
+### [See the live Webpage](https://em-t-shells.github.io/utabc-code-quiz/)
 #
 ### Curator: Emre Taskale
 ### Follow me on GitHub!
