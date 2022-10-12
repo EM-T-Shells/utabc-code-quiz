@@ -6,8 +6,8 @@ This is a quiz application with some added functionalities including a timer and
 
 ![]()
 ## Installation
-Clone this repository to your desktop
-Open the html file within the in your preferred code editor
+Clone this repository to your desktop  
+Open the html file within the in your preferred code editor  
 
 ![]()
 
@@ -26,8 +26,8 @@ To see any changes you may desire to experiment with and see in real time, use t
 [Hall of Fame](assets/images/hofPage.png)
 ![]()
 ### Resources:
-https://getbootstrap.com/docs/3.4/javascript/
-https://www.tutorialrepublic.com/codelab.php?topic=faq&file=javascript-stop-setinterval-call
+https://getbootstrap.com/docs/3.4/javascript/  
+https://www.tutorialrepublic.com/codelab.php?topic=faq&file=javascript-stop-setinterval-call  
 
 ![]()
 ### [See the live Webpage](https://em-t-shells.github.io/utabc-code-quiz/)
