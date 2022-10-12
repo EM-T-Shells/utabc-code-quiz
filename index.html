@@ -6,135 +6,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" src="assets/style.css">
-  <link src="game.html">
 </head>
-<body>
-  <div class="card bg-black text-center vh-100">
-    <div class="card-body d-flex flex-column col-10 align-items-center mx-auto my-5 bg-gradient border rounded border-secondary">
-      <h1 class="display-1 w-100 text-dark bg-secondary bg-gradient border rounded border-secondary py-4">Code Quiz</h1>
-      <blockquote class="blockquote col-9 mt-5">
-        <p class="quote mt-5 text-muted">
-          <em>"You take the blue pill—the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes."</em>
-        </p>
-        <footer class="blockquote-footer mt-1">
-          Morpheus
-          <cite title="Source Title" class="text-success">
-            The Matrix
-          </cite>
-        </footer>
-      </blockquote>
-      <div class="m-auto">
-        <button id="readyStartBtn" class="btn btn-danger border p-5" type="button">
-          Ready Player 1?
-        </button>
-        <div class="btn space "></div>
-        <button id="hallOfFameBtn" class="startPageButtons btn btn-info border p-5 text-white" type="button">
-          Hall of Fame
-        </button>
-      </div>
-    </div>
-  </div>
+  <body>
+    <main id="home" class="card bg-black text-center vh-100">
+      <section class="card-body d-flex flex-column col-10 align-items-center justify-content-around mx-auto my-5 bg-gradient border rounded border-secondary">
+        <h1 class="display-1 col-12 text-dark bg-secondary bg-gradient border rounded border-secondary py-4">Code Quiz</h1>
+        <blockquote class="blockquote">
+          <p class="h4 text-muted col-lg-8 offset-lg-2">
+            <em>"You take the blue pill—the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes."</em>
+          </p>
+          <footer class="blockquote-footer mt-1">
+            Morpheus
+            <cite title="Source Title" class="text-success">
+              The Matrix
+            </cite>
+          </footer>
+        </blockquote>
+        <div class="row gy-3 mx-1">
+          <button id="start-quiz-button" class="btn btn-danger border p-5" type="button">
+            Ready Player 1?
+          </button>
+          <button id="hof-button" class=" btn btn-info border p-5 text-white" type="button" onclick="return showHighScores(event)" href="#">
+            Hall of Fame
+          </button>
+        </div>
+      </section>
+    </main>
 
-  <!--quiz page-->
-  <div class="jumbotron d-flex flex-column bg-black vh-100">
-  <!--navbar for high-scores and timer-->
-    <nav class="navbar justify-content-evenly bg-dark  bg-gradient border-bottom border-success py-3">
-      <a class="nav-item-HOF text-decoration-none text-success" href="hof.html">
-        <div class="text-center">&#x1F3C6;</div>
+<!--quiz page-->
+  <main id="quizPage" class="container-fluid bg-black vh-100" style="display: none">
+    <nav class="navbar justify-content-evenly bg-dark bg-gradient border-bottom border-success py-3">
+      <a id="hof-button" class="nav-item-home text-decoration-none text-success" onclick="return showHighScores(event)" href="#">
+        <button class="text-center" type="button">
+          &#x1F3C6;
+        </button>
         Hall of Fame
       </a>
-      <a class="nav-item-home text-decoration-none" href="index.html">
-        <div class="text-center">
+      <a id="homeButton" class="nav-item-home text-decoration-none" href="index.html">
+        <button class="text-center" type="button">
           &#127968;
-        </div>
+        </button>
         Home Page
-      </a>
-      <a class="nav-item-restart text-decoration-none text-warning" href="game.html">
-        <div class="text-center">&#128466;</div>
-        Restart Quiz
       </a>
     </nav>
 
-    <!--timer-->
-    <div id="timer">
-      <div id="counter"></div>
-      <div id="btimeGauge"></div>
-      <div id="timeGauge"></div>
-    </div>
-
-    <!--score-->
-    <div id="scoreContainer" class="score text-white text-center m-auto"></div>
-
     <!--card for quiz question and choices-->
-    <div class="card col-10 d-flex flex-column m-auto border-info bg-dark bg-gradient">
+    <section class="card col-10 mx-auto my-5 border-info bg-dark bg-gradient">
 
-      <!--progress-->
-      <div id="progress" class="progress bg-secondary"></div>
-
-      <!--question div-->
-      <div class="card-header bg-black text-white text-center h-auto py-4">
-        <span id="question-text" class="lead question-text"></span>
+      <!--timer-->
+      <div class="text-center border-bottom text-danger display-1">
+        <div id="timer" class=" text-right">
+            <i class="far fa-clock"></i> Time: <span id="timeLeft">0</span>
+          </div>
+          <div id="timesUp" class="col text-right" style="display: none">Time's Up!</div>
       </div>
 
-      <!--quiz-->
-      <div id="choices" class="card-body px-3 pb-0">
+      <div class="card-header bg-black text-white text-center py-4">
+        <p id="questionText" class="lead question-text">
+        </p>
+      </div>
 
-        <div class="choice">
-          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="A" value=" " onsubmit="checkAnswer('A')">
-          <label class="choice-text" for="A"></label>
-        </div>
+      <div id="quizChoices" class="card-body px-5 py-4">
+        <p><button class="btn btn-info w-100 p-3 border border-dark" id="A"></button></p>
+        <p><button class="btn btn-info w-100 p-3 border border-dark" id="B"></button></p>
+        <p><button class="btn btn-info w-100 p-3 border border-dark" id="C"></button></p>
+        <p><button class="btn btn-info w-100 p-3 border border-dark" id="D"></button></p>
+        <hr id="lineBreak" style="display: none" class="mt-4">
+        <p id="answerCheck" class="text-muted" style="display: none;"></p>
+      </div>
+    </section>
+  </main>
 
-        <div class="choice">
-          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="B" value=" " onsubmit="checkAnswer('B')">
-          <label class="choice-text" for="B"></label>
-        </div>
-
-        <div class="choice">
-          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="C" value=" " onsubmit="checkAnswer('C')">
-          <label class="choice-text" for="C"></label>
-        </div>
-
-        <div class="choice">
-          <input class="choice-submit p-3 w-100 bg-info" type="submit" id="D" value=" " onsubmit="checkAnswer('D')">
-          <label class="choice-text" for="D"></label>
-        </div>
-
-      <!--footer for restart and quit, quiz options-->
-      <div class=”card-footer”></div>
+     <!--post-quiz-page-->
+  <main>
+     <div id="summary" class="bg-dark vh-100 pl-5 ml-2 pt-5 justify-content-center font-weight-bold" style="display: none">
+      <div class="col-2"></div>
+      <div class="col-8 text-left">
+        <h2 class="font-weight-bold pt-2 pb-3 m-2 text-white">Your final score is
+          <span id="finalScore"></span>
+          !
+        </h2>
+        <form>
+            <p class="pt-2 pb-3 m-2 text-white">Enter your initials: <input id="initialInput" class="form-control pt-2 pb-3 mt-2" type="text">
+            <button type="submit" id="submitInitialBtn" class="btn btn-info mt-3">Submit</button>
+            </p>
+        </form>
+      </div>
     </div>
-  </div>
+    <div class="col-2"></div>
+  </main>
 
 
   <!--HoF page-->
-  <div class="container-fluid d-flex flex-column bg-black bg-gradient vh-100">
-    <nav class="navbar justify-content-evenly bg-dark  bg-gradient border-bottom border-success py-3">
-      <a class="nav-item-HOF text-decoration-none text-success" href="hof.html">
-        <div class="text-center">&#x1F3C6;</div>
-        Hall of Fame
-      </a>
-      <a class="nav-item-home text-decoration-none" href="index.html">
-        <div class="text-center">
+  <main id="hofPage" class="vh-100 bg-dark" style="display: none">
+    <nav class="navbar justify-content-evenly bg-gradient border-bottom border-success py-3">
+      <a id="homeButton" class="nav-item-home text-decoration-none" href="index.html">
+        <button class="text-center" type="button">
           &#127968;
-        </div>
+        </button>
         Home Page
       </a>
-      <a class="nav-item-restart text-decoration-none text-warning" href="game.html">
-        <div class="text-center">&#128466;</div>
-        Restart Quiz
-      </a>
     </nav>
-    <div class="card align-items-center col-6 m-auto bg-dark border border-success">
-      <div class="card-header border-success">
+    <section class="card align-items-center col-6 mx-auto mt-5 bg-dark border border-success">
+      <div id="hofSection" class="card-header border-success">
         <h1 class="card-title display-1 text-center text-success">Hall of Fame</h1>
       </div>
-      <div class="card-body display-6">
-        <ol class="list-group-item mt-3 text-light">
-        </ol>
+      <div id="hofList" class="list-group list-group-flush pt-2 pb-3 mb-2 display-6 text-success">
       </div>
-    </div>
-  </div>
-
+      <!--store scores here-->
+      <p>
+        <button type="submit" class="btn btn-info mt-3 mr-3" id="goBackBtn">Go Back</button>
+        <button type="submit" class="btn btn-info mt-3" id="clearHighScoreBtn">Clear High Scores</button>
+      </p>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <script src="assets/script.js"></script>
 </body>
 </html>
